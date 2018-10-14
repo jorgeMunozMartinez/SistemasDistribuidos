@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This file was written by IceGrid Admin -->
+<icegrid>
+   <application name="Robots">
+      <node name="node1">
+         <server id="Container" activation="always" exe="./container.py">
+            <properties>
+            </properties>
+            <adapter name="ContainerAdapter" endpoints="default" id="${server}.ContainerAdapter">
+               <object identity="containerControlador" type="::drobotsAux::controllerContainer" property="Identity"/>
+               <object identity="containerFactory" type="::drobotsAux::controllerContainer"/>
+               <object identity="containerMinas" type="::drobotsAux::controllerContainer"/>
+            </adapter>
+         </server>
+      </node>
+      <node name="node2">
+         <server id="Factoria0" activation="always" exe="./factoria.py">
+            <properties>
+            </properties>
+            <adapter name="FactoryAdapter" endpoints="default" id="${server}.FactoryAdapter">
+               <object identity="factoria0" type="::drobotsAux::controllerFactory" property="Identity"/>
+            </adapter>
+         </server>
+         <server id="Factoria1" activation="always" exe="./factoria.py">
+            <properties>
+            </properties>
+            <adapter name="FactoryAdapter" endpoints="default" id="${server}.FactoryAdapter">
+               <object identity="factoria1" type="::drobotsAux::controllerFactory" property="Identity"/>
+            </adapter>
+         </server>
+      </node>
+      <node name="node3">
+         <server id="Factoria2" activation="always" exe="./factoria.py">
+            <properties>
+            </properties>
+            <adapter name="FactoryAdapter" endpoints="default" id="${server}.FactoryAdapter">
+               <object identity="factoria2" type="::drobotsAux::controllerFactory" property="Identity"/>
+            </adapter>
+         </server>
+         <server id="Factoria3" activation="always" exe="./factoria.py">
+            <properties>
+            </properties>
+            <adapter name="FactoryAdapter" endpoints="default" id="${server}.FactoryAdapter">
+               <object identity="factoria3" type="::drobotsAux::controllerFactory" property="Identity"/>
+            </adapter>
+         </server>
+      </node>
+      <node name="node4">
+         <server id="Cliente" activation="always" exe="./client.py">
+            <properties>
+               <property name="GameProxy" value="drobots9"/>
+               <property name="GameProxy.Locator" value="IceGrid/Locator -t:tcp -h atclab.esi.uclm.es -p 4061"/>
+               <property name="Factoria" value="factory"/>
+               <property name="Factoria.Locator" value="IceGrid/Locator -t:tcp -h atclab.esi.uclm.es -p 4061"/>
+            </properties>
+            <adapter name="PlayerAdapter" endpoints="default" id="${server}.PlayerAdapter"/>
+         </server>
+      </node>
+      <node name="node5">
+         <server id="Cliente2" activation="always" exe="./client2.py">
+            <properties>
+               <property name="GameProxy" value="drobots9"/>
+               <property name="GameProxy.Locator" value="IceGrid/Locator -t:tcp -h atclab.esi.uclm.es -p 4061"/>
+               <property name="Factoria" value="factory"/>
+               <property name="Factoria.Locator" value="IceGrid/Locator -t:tcp -h atclab.esi.uclm.es -p 4061"/>
+            </properties>
+            <adapter name="PlayerAdapter" endpoints="default" id="${server}.PlayerAdapter"/>
+         </server>
+      </node>
+   </application>
+</icegrid>
